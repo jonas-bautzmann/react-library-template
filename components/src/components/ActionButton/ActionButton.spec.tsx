@@ -31,7 +31,7 @@ describe('ActionButton', () => {
     render(<ActionButton onClick={clickSpy} />);
     const user = userEvent.setup();
     await user.click(screen.getByRole('button'));
-    expect(clickSpy).toHaveBeenCalledOnce();
-    expect(clickSpy).toHaveBeenCalledWith(expect.any(Event));
+    expect(clickSpy).toHaveBeenCalledTimes(1);
+    expect(clickSpy).toHaveBeenCalledWith(expect.any(Object));
   });
 });

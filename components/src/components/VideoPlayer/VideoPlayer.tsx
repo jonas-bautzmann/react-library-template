@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import videojs, { VideoJsPlayerOptions, VideoJsPlayer } from 'video.js';
-import 'video.js/dist/video-js.min.css';
+import videojsStylesheet from 'video.js/dist/video-js.min.css?inline';
+import styleInject from 'style-inject';
+styleInject(videojsStylesheet);
 
 interface VideoPlayerProps {
   options: VideoJsPlayerOptions;

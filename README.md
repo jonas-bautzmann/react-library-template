@@ -1,12 +1,12 @@
-# Vue.js 2 Component Library Template
+# React Component Library Template
 
-> Project template for Vue.js 2.7 component library
+> Project template for React 18 component library
 
 ## Features
 
 - 📦 [PNPM](https://pnpm.io/) for package management
 - ⚡ [Vite](https://vitejs.dev/) for library build
-- 🧪 [Vitest](https://vitest.dev/) and [Vue Testing Library](https://testing-library.com/docs/vue-testing-library/intro/) for unit testing
+- 🧪 [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) for unit testing
 - 📕 [Storybook](https://storybook.js.org/) for component presentation
 - 🔥 [Rendering smoke tests](https://storybook.js.org/docs/vue/writing-tests/test-runner) for Storybook stories
 - 👀 [Visual regression tests](https://storybook.js.org/docs/vue/writing-tests/visual-testing) for Storybook stories
@@ -157,14 +157,14 @@ Applications can either use static imports from the main module...
 
 ```js
 // Only used exports will be included in application bundle.
-import { ActionButton } from 'vue-library-template-components';
+import { ActionButton } from 'react-library-template-components';
 ```
 
 Or they can use dynamic imports from specific submodules as needed.
 
 ```js
 // Only requested component module will be included in application bundle.
-import('vue-library-template-components/dist/components/VideoPlayer').then(
+import('react-library-template-components/dist/components/VideoPlayer').then(
   ({ VideoPlayer }) => VideoPlayer
 );
 ```
@@ -191,11 +191,7 @@ _Note: Style injection is performed client-side once the component module is loa
 
 ### Type Declarations
 
-Library build generates TypeScript declaration files for components using `vue-tsc`. This enables JSDoc and type checking for component props in applications.
-
-### Storybook Type Checking
-
-The generic utility type `StoryArgs` defined in `storybook/stories/types.ts` can be used to derive a type for story args based on Vue component type declaration. It picks prop types automatically and allows definition of additional args properties. This enables at least basic type safety for story args. For example, it yields an error when attempting to set args which are not specified (or derived from component's props).
+Library build generates TypeScript declaration files for components using `tsc`. This enables JSDoc and type checking for component props in applications.
 
 ### Visual Regression Tests and Accessibility Tests
 
