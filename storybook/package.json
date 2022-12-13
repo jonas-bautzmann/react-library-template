@@ -1,7 +1,7 @@
 {
-  "name": "vue-library-template-storybook",
+  "name": "react-library-template-storybook",
   "version": "1.0.0",
-  "description": "Vue.js component library Storybook template",
+  "description": "React component library Storybook template",
   "author": "Georg Wittberger",
   "license": "MIT",
   "private": true,
@@ -25,8 +25,7 @@
   "dependencies": {
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "vue": "^2.7.14",
-    "vue-library-template-components": "workspace:*"
+    "react-library-template-components": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

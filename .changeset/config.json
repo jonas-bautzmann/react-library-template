@@ -3,7 +3,7 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [
-    ["vue-library-template-components", "vue-library-template-storybook"]
+    ["react-library-template-components", "react-library-template-storybook"]
   ],
   "linked": [],
   "access": "restricted",

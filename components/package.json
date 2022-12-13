@@ -1,7 +1,7 @@
 {
-  "name": "vue-library-template-components",
+  "name": "react-library-template-components",
   "version": "1.0.0",
-  "description": "Vue.js component library template",
+  "description": "React component library template",
   "author": "Georg Wittberger",
   "license": "MIT",
   "private": true,
@@ -26,12 +26,12 @@
   ],
   "scripts": {
     "dev": "chokidar \"src/**/*\" -c \"pnpm check && pnpm build\"",
-    "check": "vue-tsc --noEmit",
-    "lint": "eslint --ext .js,.ts,.vue .",
-    "lint:fix": "eslint --ext .js,.ts,.vue . --fix",
-    "build": "vite build && vue-tsc --project tsconfig.build.json",
-    "test": "vitest",
-    "test:run": "vitest run --coverage",
+    "check": "tsc --noEmit",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "eslint --ext .js,.ts,.tsx . --fix",
+    "build": "vite build && tsc --project tsconfig.build.json",
+    "test": "jest",
+    "test:run": "jest --watch",
     "ci": "pnpm check && pnpm test:run && pnpm build"
   },
   "dependencies": {
@@ -42,28 +42,31 @@
     "@testing-library/dom": "^7.31.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
-    "@testing-library/vue": "^5.8.3",
+    "@testing-library/react": "^13.4.0",
     "@types/glob": "^8.0.0",
+    "@types/jest": "^29.2.4",
     "@types/minimatch": "^5.1.2",
     "@types/node": ">=16.0.0",
+    "@types/react": "^18.0.26",
     "@types/style-inject": "^0.3.0",
     "@types/testing-library__jest-dom": "^5.14.5",
     "@types/video.js": "^7.3.49",
-    "@vitejs/plugin-vue2": "^2.0.1",
+    "@vitejs/plugin-react": "^3.0.0",
     "@vitest/coverage-istanbul": "^0.23.4",
     "chokidar-cli": "^3.0.0",
     "glob": "^8.0.3",
     "minimatch": "^5.1.0",
     "rollup": "^2.79.1",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.3",
     "vite": "^3.2.4",
-    "vitest": "^0.23.4",
-    "vue": "^2.7.14",
-    "vue-template-compiler": "^2.7.14",
-    "vue-tsc": "^1.0.9"
+    "jest": "^29.3.1",
+    "identity-obj-proxy": "^3.0.0",
+    "react": "^18.2.0"
   },
   "peerDependencies": {
-    "vue": "^2.7.0"
+    "react": "^18.2.0"
   },
   "engines": {
     "node": ">=16.0.0",

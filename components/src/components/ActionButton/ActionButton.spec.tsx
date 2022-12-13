@@ -1,19 +1,17 @@
+import React from 'react';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/vue';
-import { describe, expect, it, vi } from 'vitest';
-import type { ActionButtonVariant } from './ActionButton.model';
-import ActionButton from './ActionButton.vue';
+import { render, screen } from '@testing-library/react';
+import { ActionButtonVariant } from './ActionButton.model';
+import ActionButton from './ActionButton';
 
 describe('ActionButton', () => {
   it('should render button element', () => {
-    render(ActionButton);
+    render(<ActionButton />);
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('should render default slot as button caption', () => {
-    render(ActionButton, {
-      slots: { default: 'Test Caption' },
-    });
+    render(<ActionButton>Test Caption</ActionButton>);
     expect(screen.getByRole('button')).toHaveTextContent('Test Caption');
   });
 
@@ -22,19 +20,15 @@ describe('ActionButton', () => {
     ['action-button--primary', 'primary'],
     ['action-button--secondary', 'secondary'],
   ])('should render class "%s" when variant is "%s"', (className, variant) => {
-    render(ActionButton, {
-      propsData: { variant },
-    });
+    render(<ActionButton variant={variant} />);
     expect(Array.from(screen.getByRole('button').classList)).toContain(
       className
     );
   });
 
   it('should emit click event when button is clicked', async () => {
-    const clickSpy = vi.fn();
-    render(ActionButton, {
-      listeners: { click: clickSpy },
-    });
+    const clickSpy = jest.fn();
+    render(<ActionButton onClick={clickSpy} />);
     const user = userEvent.setup();
     await user.click(screen.getByRole('button'));
     expect(clickSpy).toHaveBeenCalledOnce();

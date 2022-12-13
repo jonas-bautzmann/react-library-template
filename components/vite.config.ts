@@ -1,5 +1,4 @@
-/// <reference types="vitest" />
-import vue from '@vitejs/plugin-vue2';
+import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
 import type { ModuleFormat } from 'rollup';
 import { defineConfig } from 'vite';
@@ -10,8 +9,8 @@ import packageJson from './package.json';
 // More on Vite configuration: https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    // More on Vue.js plugin: https://github.com/vitejs/vite-plugin-vue2
-    vue(),
+    // More on React plugin: https://github.com/vitejs/vite-plugin-react
+    react(),
     // Generate separate chunks for components to enable code splitting.
     entrypoints({
       baseDir: resolve(__dirname, 'src'),
@@ -27,7 +26,7 @@ export default defineConfig({
     // More on Vite library mode: https://vitejs.dev/guide/build.html#library-mode
     lib: {
       entry: { index: resolve(__dirname, 'src/index.ts') },
-      name: 'VueLibraryTemplate',
+      name: 'ReactLibraryTemplate',
     },
     minify: false,
     target: ['chrome80', 'edge80', 'firefox80', 'safari12'],
@@ -50,15 +49,6 @@ export default defineConfig({
         // Enable helper functions for default/namespace imports in CommonJS output.
         interop: 'auto',
       })),
-    },
-  },
-  // More on Vitest configuration: https://vitest.dev/config/
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './vitest.setup.ts',
-    coverage: {
-      provider: 'istanbul',
     },
   },
 });
