@@ -1,24 +1,17 @@
+import React from 'react';
 import { action } from '@storybook/addon-actions';
-import type { Meta, StoryFn } from '@storybook/vue';
 import {
   ActionButton,
   ActionButtonVariant,
-} from 'vue-library-template-components';
-import { StoryArgCategory, StoryArgs } from './types';
+} from 'react-library-template-components';
+import { StoryArgCategory } from './types';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-type ActionButtonStoryArgs = StoryArgs<
-  typeof ActionButton,
-  {
-    slotDefault?: string;
-    onClick?: (event: Event) => void;
-  }
->;
-
-// More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
-const metadata: Meta<ActionButtonStoryArgs> = {
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+const metadata: ComponentMeta<typeof ActionButton> = {
   title: 'Atoms/ActionButton',
   component: ActionButton,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
+  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     variant: {
       description: 'Button style variant',
@@ -39,18 +32,18 @@ const metadata: Meta<ActionButtonStoryArgs> = {
         category: StoryArgCategory.Props,
       },
     },
-    slotDefault: {
+    children: {
       name: '#default',
       description: 'Button caption',
       type: 'string',
       control: 'text',
       table: {
         type: { summary: 'string' },
-        category: StoryArgCategory.Slots,
+        category: StoryArgCategory.Children,
       },
     },
     onClick: {
-      name: '@click',
+      name: 'onClick',
       description: 'Click event listener',
       type: 'function',
       table: {
@@ -66,29 +59,26 @@ const metadata: Meta<ActionButtonStoryArgs> = {
 
 export default metadata;
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
-const Template: StoryFn<ActionButtonStoryArgs> = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { ActionButton },
-  template:
-    '<ActionButton :variant="variant" @click="onClick">{{ slotDefault }}</ActionButton>',
-});
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof ActionButton> = (_args) => (
+  <ActionButton {..._args} />
+);
 
 export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/vue/writing-stories/args
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   variant: 'primary',
-  slotDefault: 'Primary Button',
+  children: 'Primary Button',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: 'secondary',
-  slotDefault: 'Secondary Button',
+  children: 'Secondary Button',
 };
 
 export const Default = Template.bind({});
 Default.args = {
   variant: 'default',
-  slotDefault: 'Default Button',
+  children: 'Default Button',
 };

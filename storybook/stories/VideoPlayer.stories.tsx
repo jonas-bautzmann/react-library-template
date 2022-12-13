@@ -1,20 +1,14 @@
+import React from 'react';
 import { action } from '@storybook/addon-actions';
-import type { Meta, StoryFn } from '@storybook/vue';
-import { VideoPlayer } from 'vue-library-template-components';
-import { StoryArgCategory, StoryArgs } from './types';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import { VideoPlayer } from 'react-library-template-components';
+import { StoryArgCategory } from './types';
 
-type VideoPlayerStoryArgs = StoryArgs<
-  typeof VideoPlayer,
-  {
-    onReady?: () => void;
-  }
->;
-
-// More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
-const metadata: Meta<VideoPlayerStoryArgs> = {
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+const metadata: ComponentMeta<typeof VideoPlayer> = {
   title: 'Molecules/VideoPlayer',
   component: VideoPlayer,
-  // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
+  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     options: {
       description: 'Video.js player options.',
@@ -51,7 +45,7 @@ const metadata: Meta<VideoPlayerStoryArgs> = {
       },
     },
     onReady: {
-      name: '@ready',
+      name: 'onReady',
       description: 'Ready event listener invoked when video is ready to play',
       type: 'function',
       table: {
@@ -67,12 +61,10 @@ const metadata: Meta<VideoPlayerStoryArgs> = {
 
 export default metadata;
 
-// More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
-const Template: StoryFn<VideoPlayerStoryArgs> = (_args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { VideoPlayer },
-  template: '<VideoPlayer :options="options" @ready="onReady" />',
-});
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof VideoPlayer> = (_args) => (
+  <VideoPlayer {..._args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import videojs, { VideoJsPlayerOptions, VideoJsPlayer } from 'video.js';
+import 'video.js/dist/video-js.min.css';
 
 interface VideoPlayerProps {
   options: VideoJsPlayerOptions;
+  onReady?: videojs.ReadyCallback;
 }
 
-const VideoPlayer = ({ options }: VideoPlayerProps): JSX.Element => {
+const VideoPlayer = (args: VideoPlayerProps): JSX.Element => {
   const videoElement = useRef<HTMLVideoElement>(null);
   const player = useRef<VideoJsPlayer>();
 
@@ -14,12 +16,12 @@ const VideoPlayer = ({ options }: VideoPlayerProps): JSX.Element => {
       return;
     }
 
-    player.current = videojs(videoElement.current, options);
+    player.current = videojs(videoElement.current, args.options, args.onReady);
 
     return () => {
       player.current?.dispose();
     };
-  }, [options]);
+  }, [args]);
 
   return (
     <div className="video-player">
